@@ -41,6 +41,7 @@ html body a {
 }
 .content .slide-show {
   display: flex;
+  position: relative;
   height: 60vh;
   color: #ffffff;
   text-shadow: 0 0 20px #000000;
@@ -90,6 +91,10 @@ html body a {
   .content .slide-show .slide-image .text {
     width: 70%;
   }
+}
+.content .slide-show .slide-buttons {
+  bottom: 10px;
+  right: 10px;
 }
 .content .slide-show .image-1 {
   background: url("images/5.png");

@@ -52,7 +52,7 @@ html {
     .slide-show {
         // border: 1px solid black;
         display: flex;
-        // overflow: hidden;
+        position: relative;
         height: 60vh;
         color: map-get($map: $colors, $key: whitee);
         text-shadow: 0 0 20px map-get($map: $colors, $key: blackk);
@@ -97,6 +97,10 @@ html {
                     width: 70%;
                 }
             }
+        }
+        .slide-buttons {
+            bottom: 10px;
+            right: 10px;
         }
         .image-1 {
             background: url('images/5.png');
