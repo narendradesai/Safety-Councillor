@@ -31,6 +31,9 @@ html body a {
 .header a {
   white-space: nowrap;
 }
+.header .menu-bar li {
+  border-bottom: 1px solid transparent;
+}
 .header .menu-bar li:hover {
   border-bottom: 1px solid red;
 }
@@ -95,6 +98,12 @@ html body a {
 .content .slide-show .slide-buttons {
   bottom: 10px;
   right: 10px;
+}
+.content .slide-show .slide-buttons .slide-button {
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  background: #ffffff;
 }
 .content .slide-show .image-1 {
   background: url("images/5.png");

@@ -6,6 +6,7 @@ $colors: (
     redd: red,
     greenn: #0D9361,
     greyy: #D9D9D9,
+    transparentt: transparent, 
 );
 
 /* <reusable> */
@@ -40,6 +41,7 @@ html {
     }
     .menu-bar {
         li {
+            border-bottom: 1px solid map-get($map: $colors, $key: transparentt);
             &:hover {
                 border-bottom: 1px solid map-get($map: $colors, $key: redd);
             }
@@ -101,6 +103,12 @@ html {
         .slide-buttons {
             bottom: 10px;
             right: 10px;
+            .slide-button {
+                margin-right: 10px;
+                padding: 10px;
+                border: 1px solid map-get($map: $colors, $key: transparentt);
+                background: map-get($map: $colors, $key: whitee);
+            }
         }
         .image-1 {
             background: url('images/5.png');

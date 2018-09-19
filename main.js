@@ -5,29 +5,31 @@ if(config.enableDevMode){
 }
 class SlideShow {
     constructor(){
-        this.imageNumber = 2;
+        this.imageNumber = 1;
+        this.timer = setInterval( () => {
+            this.imageNumber += 1;
+            this.adjustImageCount();
+            this.setImage();
+        }, config.slideTime );
     }
-    setImage( number ) {
+    setImage() {
         let moved = document.getElementsByClassName(`move-to-center`);
         moved[0].classList.add(`move-to-out`);
         moved[0].style.WebkitAnimationDuration = `${config.slideTime/2.5}ms`;
         moved[0].style.animationDuration = `${config.slideTime/2.5}ms`;
         moved[0].classList.remove(`move-to-center`);
 
-        let imageElement = document.getElementsByClassName(`image-${number}`);
+        let imageElement = document.getElementsByClassName(`image-${this.imageNumber}`);
         imageElement[0].classList.add(`move-to-center`);
         imageElement[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
         imageElement[0].style.animationDuration = `${config.slideTime}ms`;
         imageElement[0].classList.remove(`move-to-out`);
     }
     interval() {
-        setInterval( () => {
-            this.setImage(this.imageNumber);
-            let slideImagesElement = document.getElementsByClassName(`slide-image`);
-            let slideImagesArrayLength = slideImagesElement.length;
-            this.imageNumber++;
-            if(this.imageNumber > slideImagesArrayLength)
-                this.imageNumber = 1;
+        this.timer = setInterval( () => {
+            this.imageNumber += 1;
+            this.adjustImageCount();
+            this.setImage();
         }, config.slideTime );
     }
     addEventListners() {
@@ -35,13 +37,26 @@ class SlideShow {
         buttonElementArray = Array.from(buttonElement);
         buttonElementArray.map( (element) => {
             element.addEventListener(`click`, () => {
-                this.imageNumber = parseInt(element.innerHTML, 10);
-                this.setImage(this.imageNumber);
+                clearInterval(this.timer);
+                if(element.value == "inc")
+                    this.imageNumber += 1;
+                else
+                    this.imageNumber -= 1;
+                this.adjustImageCount();
+                this.setImage();
+                this.interval();
             });
         })
+    }
+    adjustImageCount() {
+        let slideImagesElement = document.getElementsByClassName(`slide-image`);
+        if( this.imageNumber > slideImagesElement.length )
+            this.imageNumber = 1;
+        else if ( this.imageNumber < 1 )
+            this.imageNumber = 4;
     }
 }
 
 let slideShowInstance = new SlideShow();
-slideShowInstance.interval();
+// slideShowInstance.interval();
 slideShowInstance.addEventListners();
