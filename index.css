@@ -22,7 +22,12 @@ html body a {
 }
 
 .header {
-  font-size: 2vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 1rem;
+  background: #ffffff;
+  z-index: 1;
 }
 .header ul {
   display: flex;
@@ -31,14 +36,44 @@ html body a {
 .header a {
   white-space: nowrap;
 }
-.header .menu-bar li {
+@media only screen and (max-width: 370px) {
+  .header .menu:hover > ul {
+    display: block;
+    text-align: center;
+    background: #ffffff;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+}
+.header .menu-bar-button {
+  display: none;
+  width: 3vh;
+}
+.header .menu-bar-button div {
+  border-bottom: 1px solid #000000;
+  padding: 2px 0;
+}
+@media only screen and (max-width: 370px) {
+  .header .menu-bar-button {
+    display: block;
+  }
+}
+.header .menu-bar-expanded li {
   border-bottom: 1px solid transparent;
 }
-.header .menu-bar li:hover {
+.header .menu-bar-expanded li:hover {
   border-bottom: 1px solid red;
+}
+@media only screen and (max-width: 370px) {
+  .header .menu-bar-expanded {
+    display: none;
+  }
 }
 
 .content {
+  margin-top: calc(2em + 2em + 0.3rem);
+  z-index: 0;
   position: relative;
   overflow: hidden;
 }
@@ -75,7 +110,7 @@ html body a {
   margin-left: 30%;
   margin-bottom: 0;
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 370px) {
   .content .slide-show .slide-image .text h1 {
     font-size: 4.5vmax;
   }
@@ -85,12 +120,12 @@ html body a {
   margin-top: 0;
   margin-left: 20%;
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 370px) {
   .content .slide-show .slide-image .text p {
     font-size: 2.7vmax;
   }
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 370px) {
   .content .slide-show .slide-image .text {
     width: 70%;
   }

@@ -6,11 +6,9 @@ if(config.enableDevMode){
 class SlideShow {
     constructor(){
         this.imageNumber = 1;
-        this.timer = setInterval( () => {
-            this.imageNumber += 1;
-            this.adjustImageCount();
-            this.setImage();
-        }, config.slideTime );
+        this.timer = null;
+        this.interval();
+        this.addEventListners();
     }
     setImage() {
         let moved = document.getElementsByClassName(`move-to-center`);
@@ -57,6 +55,4 @@ class SlideShow {
     }
 }
 
-let slideShowInstance = new SlideShow();
-// slideShowInstance.interval();
-slideShowInstance.addEventListners();
+new SlideShow();
