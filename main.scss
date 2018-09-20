@@ -8,6 +8,9 @@ $colors: (
     greyy: #D9D9D9,
     transparentt: transparent, 
 );
+$sizes: (
+    mobile: 540px,
+);
 
 /* <reusable> */
 .padding-0-5-rem {
@@ -31,7 +34,12 @@ html {
     }
 }
 .header {
-    font-size: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-size: 1rem;
+    background: map-get($map: $colors, $key: whitee);
+    z-index: 1;
     ul {
         display: flex;
         justify-content: space-around;
@@ -39,16 +47,44 @@ html {
     a {
         white-space: nowrap;
     }
-    .menu-bar {
+    .menu {
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            &:hover > ul {
+                display: block;
+                text-align: center;
+                background: map-get($map: $colors, $key: whitee);
+                position: absolute;
+                right: 0;
+                width: 100%;
+            }
+        }
+    }
+    .menu-bar-button {
+        display: none;
+        width: 1em;
+        div {
+            border-bottom: 1px solid map-get($map: $colors, $key: blackk);
+            padding: 2px 0;
+        }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: block;
+        }
+    }
+    .menu-bar-expanded {
         li {
             border-bottom: 1px solid map-get($map: $colors, $key: transparentt);
             &:hover {
                 border-bottom: 1px solid map-get($map: $colors, $key: redd);
             }
         }
+        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+            display: none;
+        }
     }
 }
 .content {
+    margin-top: calc(2em + 2em + 0.3rem);
+    z-index: 0;
     position: relative;
     overflow: hidden;
     .slide-show {
@@ -83,7 +119,7 @@ html {
                     font-size: 3.5vmax;
                     margin-left: 30%;
                     margin-bottom: 0;
-                    @media only screen and (max-width: 360px) {
+                    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                         font-size: 4.5vmax;
                     }
                 }
@@ -91,11 +127,11 @@ html {
                     font-size: 1.6vmax;
                     margin-top: 0;
                     margin-left: 20%;
-                    @media only screen and (max-width: 360px) {
+                    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                         font-size: 2.7vmax;
                     }
                 }
-                @media only screen and (max-width: 360px) {
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
                     width: 70%;
                 }
             }
@@ -165,9 +201,9 @@ html {
             width: 21vmax;
             > img {
                 margin: 0.5em;
-                height: 20vmax;
+                height: 16em;
                 align-self: center;
-                @media only screen and (max-width: 370px){
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)){
                     height: 57vmax;
                 }
             }
@@ -177,7 +213,7 @@ html {
                     font-size: 2rem;
                     margin: 0.5vmax 0;
                 }
-                @media only screen and (max-width: 370px){
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)){
                     margin: 0 5vmax;
                 }
             }
@@ -192,11 +228,11 @@ html {
                     border-bottom: 1px solid map-get($map: $colors, $key: greyy);
                 }
             }
-            @media only screen and (max-width: 1300px) and (min-width: 370px){
+            @media only screen and (max-width: 1300px) and (min-width: map-get($map: $sizes, $key: mobile)){
                 flex-direction: row;
                 width: auto;
             }
-            @media only screen and (max-width: 370px){
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)){
                 width: 60vmax;
             }
         }
@@ -204,7 +240,6 @@ html {
             flex-direction: column;
         }
     }
-
 }
 .footer {
     background: map-get($map: $colors, $key: greenn);
@@ -213,12 +248,12 @@ html {
     color: map-get($map: $colors, $key: whitee);
     padding-bottom: 50px; 
     > div {
-        margin: 10px;
+        margin: 1em 2em;
     } 
     .contact {
         p {
             font-size: 2rem;
-            @media only screen and (min-width: 370px) {
+            @media only screen and (min-width: map-get($map: $sizes, $key: mobile)) {
                 margin: 0.5vmax 0;
             }
         }
@@ -244,7 +279,7 @@ html {
             // height: 1px;
         }
     }
-    @media only screen and (max-width: 370px) {
+    @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
         flex-direction: column;
         align-items: center;
     }
