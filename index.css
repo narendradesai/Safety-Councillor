@@ -22,7 +22,7 @@ html body a {
 }
 
 .header {
-  font-size: 2vh;
+  font-size: 1em;
 }
 .header ul {
   display: flex;
