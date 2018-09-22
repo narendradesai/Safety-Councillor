@@ -22,6 +22,15 @@ class SlideShow {
         imageElement[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
         imageElement[0].style.animationDuration = `${config.slideTime}ms`;
         imageElement[0].classList.remove(`move-to-out`);
+
+        let slideNavBar = document.getElementsByClassName(`slide-nav-bar`);
+        let slideNavButtons = slideNavBar[0].getElementsByTagName(`button`);
+        let slideNavButtonsArray = Array.from(slideNavButtons);
+        slideNavButtonsArray.map(element => {
+            element.classList.remove(`active`);
+        });
+        let slideNavBarButton = document.getElementsByClassName(`slide-nav-bar-${this.imageNumber}`);
+        slideNavBarButton[0].classList.add(`active`);
     }
     interval() {
         this.timer = setInterval( () => {
@@ -44,7 +53,19 @@ class SlideShow {
                 this.setImage();
                 this.interval();
             });
-        })
+        });
+
+        let slideNavBar = document.getElementsByClassName(`slide-nav-bar`);
+        let slideNavButtons = slideNavBar[0].getElementsByTagName(`button`);
+        let slideNavButtonsArray = Array.from(slideNavButtons);
+        slideNavButtonsArray.map( element => {
+            element.addEventListener(`click`, (e) => {
+                clearInterval(this.timer);
+                this.imageNumber = element.value;
+                this.setImage();
+                this.interval();
+            } );
+        } );
     }
     adjustImageCount() {
         let slideImagesElement = document.getElementsByClassName(`slide-image`);
