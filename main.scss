@@ -48,38 +48,48 @@ html {
         white-space: nowrap;
     }
     .menu {
+        .menu-bar-button {
+            display: none;
+            width: 1em;
+            div {
+                border-bottom: 1px solid map-get($map: $colors, $key: blackk);
+                padding: 2px 0;
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: block;
+            }
+        }
+        .menu-bar-expanded {
+            li {
+                border-bottom: 1px solid map-get($map: $colors, $key: transparentt);
+                @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                    &:hover {
+                        box-shadow: 0px 0px 20px 0px black;
+                        border: 1px solid map-get($map: $colors, $key: transparentt);
+                    }
+                }
+            }
+            > .active {
+                border-bottom: 1px solid map-get($map: $colors, $key: redd);
+            }
+            @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
+                display: none;
+            }
+        }
         @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            &:hover > ul {
+            > .active {
                 display: block;
                 text-align: center;
                 background: map-get($map: $colors, $key: whitee);
                 position: absolute;
                 right: 0;
                 width: 100%;
+                margin-top: 1em;
             }
         }
     }
-    .menu-bar-button {
-        display: none;
-        width: 1em;
-        div {
-            border-bottom: 1px solid map-get($map: $colors, $key: blackk);
-            padding: 2px 0;
-        }
-        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            display: block;
-        }
-    }
-    .menu-bar-expanded {
-        li {
-            border-bottom: 1px solid map-get($map: $colors, $key: transparentt);
-            &:hover {
-                border-bottom: 1px solid map-get($map: $colors, $key: redd);
-            }
-        }
-        @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
-            display: none;
-        }
+    .close {
+
     }
 }
 .content {
@@ -242,6 +252,7 @@ html {
     }
 }
 .footer {
+    position: relative;
     background: map-get($map: $colors, $key: greenn);
     display: flex;
     justify-content: space-around;
@@ -266,7 +277,6 @@ html {
         }
     }
     .about {
-        position: relative;
         width: 50%;
         text-align: end;
         :nth-child(2) {
@@ -276,7 +286,6 @@ html {
             position: absolute;
             background: map-get($map: $colors, $key: redd);
             width: 100%;
-            // height: 1px;
         }
     }
     @media only screen and (max-width: map-get($map: $sizes, $key: mobile)) {
