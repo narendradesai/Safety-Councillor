@@ -134,24 +134,19 @@ html body button {
   z-index: 1;
 }
 .content .slide-show .slide-image .text h1 {
-  font-size: 3.5vmax;
+  font-size: 4.5vw;
   margin-left: 30%;
   margin-bottom: 0;
 }
 @media only screen and (max-width: 540px) {
   .content .slide-show .slide-image .text h1 {
-    font-size: 4.5vmax;
+    font-size: 8vw;
   }
 }
 .content .slide-show .slide-image .text p {
-  font-size: 3.5vh;
+  font-size: 2.5vh;
   margin-top: 0;
   margin-left: 20%;
-}
-@media only screen and (max-width: 540px) {
-  .content .slide-show .slide-image .text p {
-    font-size: 2.7vmax;
-  }
 }
 @media only screen and (max-width: 540px) {
   .content .slide-show .slide-image .text {
@@ -345,16 +340,18 @@ html body button {
 
 .goTop {
   position: fixed;
-  bottom: 0;
   right: 0;
   background: #ffffff;
   box-shadow: 0 0 1em 0 #000000;
-  padding: 0.3em 0.5em;
-  margin: 1.5em;
-  display: none;
+  padding: 1em 0.5em;
+  margin: 2.2em;
+  border-radius: 0.2em;
 }
 .goTop.active {
-  display: block;
+  animation: move-to-top 500ms 0s linear forwards;
+}
+.goTop.inactive {
+  animation: move-to-bottom 500ms 0s linear forwards;
 }
 
 /* <keyframes> */
@@ -496,6 +493,70 @@ html body button {
   }
   100% {
     transform: skew(0, -56deg);
+  }
+}
+@-webkit-keyframes move-to-top {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+@-moz-keyframes move-to-top {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+@-o-keyframes move-to-top {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+@keyframes move-to-top {
+  0% {
+    bottom: -50%;
+  }
+  100% {
+    bottom: 0%;
+  }
+}
+@-webkit-keyframes move-to-bottom {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: -50%;
+  }
+}
+@-moz-keyframes move-to-bottom {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: -50%;
+  }
+}
+@-o-keyframes move-to-bottom {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: -50%;
+  }
+}
+@keyframes move-to-bottom {
+  0% {
+    bottom: 0%;
+  }
+  100% {
+    bottom: -50%;
   }
 }
 /* </keyframes> */

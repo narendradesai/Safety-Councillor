@@ -86,7 +86,9 @@ class menu {
         let liArray = Array.from(li);
         liArray.map( element => {
             element.addEventListener(`click`, (e) => {
-                this.smoothScroll(element.getElementsByTagName(`a`)[0].getAttribute(`value`));
+                let startY = this.currentYPosition();
+                let stopY = this.elementYPosition(element.getElementsByTagName(`a`)[0].getAttribute(`value`));
+                this.smoothScroll(startY, stopY);
             })
         });
 
@@ -104,18 +106,24 @@ class menu {
 
         let goTop = document.getElementsByClassName(`goTop`);
         goTop[0].addEventListener(`click`, (e) => {
-            window.scrollTo(0, 0);
+            let startY = this.currentYPosition();
+            let stopY = 0;
+            this.smoothScroll(startY, stopY);
         });
 
         window.addEventListener(`scroll`, (e) => {
             let currentY = this.currentYPosition();
-            currentY += self.innerHeight / 2.1;
+            currentY += self.innerHeight / 1.7;
             console.log(`${this.currentYPosition()} : ${currentY}`);
             let secondViewOffsetTop = this.elementYPosition(`service-section`);
-            if( currentY > secondViewOffsetTop )
+            if( currentY > secondViewOffsetTop ) {
                 goTop[0].classList.add(`active`);
-            else
+                goTop[0].classList.remove(`inactive`);
+            }
+            else {
                 goTop[0].classList.remove(`active`);
+                goTop[0].classList.add(`inactive`);
+            }
             liArray.filter( element => {
                 element.classList.remove(`active`);
             });
@@ -151,9 +159,7 @@ class menu {
         y -= document.getElementsByClassName(`header`)[0].offsetHeight;
         return y;
     }
-    smoothScroll(elementName){
-        let startY = this.currentYPosition();
-        let stopY = this.elementYPosition(elementName);
+    smoothScroll(startY, stopY){
         let distance = stopY > startY ? stopY - startY : startY - stopY;
         if (distance < 100) {
             scrollTo(0, stopY); return;
