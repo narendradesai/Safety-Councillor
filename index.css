@@ -320,6 +320,12 @@ html body button {
 .footer .contact form label {
   margin-top: 0.5vmax;
 }
+.footer .contact form button {
+  margin-top: 1em;
+  font-family: inherit;
+  align-self: center;
+  padding: 0.1em 2em;
+}
 .footer .about {
   width: 50%;
   text-align: end;

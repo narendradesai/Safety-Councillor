@@ -319,6 +319,12 @@ html {
             label {
                 margin-top: 0.5vmax; 
             }
+            button {
+                margin-top: 1em;
+                font-family: inherit;
+                align-self: center;
+                padding: 0.1em 2em;
+            }
         }
     }
     .about {
