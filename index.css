@@ -434,12 +434,60 @@ html body button {
     left: -100%;
   }
 }
+@-webkit-keyframes skew-button {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, 36deg);
+  }
+}
+@-moz-keyframes skew-button {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, 36deg);
+  }
+}
+@-o-keyframes skew-button {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, 36deg);
+  }
+}
 @keyframes skew-button {
   0% {
     transform: skew(0, 0);
   }
   100% {
     transform: skew(0, 36deg);
+  }
+}
+@-webkit-keyframes skew-button-after {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, -56deg);
+  }
+}
+@-moz-keyframes skew-button-after {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, -56deg);
+  }
+}
+@-o-keyframes skew-button-after {
+  0% {
+    transform: skew(0, 0);
+  }
+  100% {
+    transform: skew(0, -56deg);
   }
 }
 @keyframes skew-button-after {

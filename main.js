@@ -86,13 +86,6 @@ class menu {
         let liArray = Array.from(li);
         liArray.map( element => {
             element.addEventListener(`click`, (e) => {
-                let menuBarExpanded = document.getElementsByClassName(`menu-bar-expanded`);
-                let li = menuBarExpanded[0].getElementsByTagName(`li`);
-                let liArray = Array.from(li);
-                liArray.map( element => {
-                    element.classList.remove(`active`);
-                });
-                element.classList.add(`active`);
                 this.smoothScroll(element.getElementsByTagName(`a`)[0].getAttribute(`value`));
             })
         });
@@ -116,27 +109,26 @@ class menu {
 
         window.addEventListener(`scroll`, (e) => {
             let currentY = this.currentYPosition();
-            // console.log(`${currentY}`);
+            currentY += self.innerHeight / 2.1;
+            console.log(`${this.currentYPosition()} : ${currentY}`);
             let secondViewOffsetTop = this.elementYPosition(`service-section`);
             if( currentY > secondViewOffsetTop )
                 goTop[0].classList.add(`active`);
             else
                 goTop[0].classList.remove(`active`);
-            liArray.some( element => {
+            liArray.filter( element => {
+                element.classList.remove(`active`);
+            });
+            liArray.filter( element => {
                 let anchorValue = element.getElementsByTagName(`a`)[0].getAttribute(`value`);
                 let view = document.getElementsByClassName(anchorValue);
-                let viewPosition = this.elementYPosition(anchorValue);
-                let viewOffsetBottom = viewPosition + view[0].offsetHeight;
-                if( currentY >= viewPosition && currentY <= viewOffsetBottom ){
-                    liArray.map( element => {
-                        element.classList.remove(`active`);
-                    });
+                let viewOffsetTop = this.elementYPosition(anchorValue);
+                let viewOffsetBottom = viewOffsetTop + view[0].offsetHeight;
+                if( currentY >= viewOffsetTop && currentY <= viewOffsetBottom ){
                     element.classList.add(`active`);
-                    return;
                 }
             });
         });
-
     }
     currentYPosition() {
         if(self.pageYOffset) 
