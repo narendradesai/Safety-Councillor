@@ -117,8 +117,8 @@ html body button {
 }
 .content .slide-show .slide-image {
   width: 100%;
-  flex-shrink: 0;
   display: flex;
+  height: 60vh;
 }
 .content .slide-show .slide-image .skewed {
   width: 50%;
@@ -144,7 +144,7 @@ html body button {
   }
 }
 .content .slide-show .slide-image .text p {
-  font-size: 1.6vmax;
+  font-size: 3.5vh;
   margin-top: 0;
   margin-left: 20%;
 }
@@ -161,18 +161,28 @@ html body button {
 .content .slide-show .slide-nav-bar {
   display: flex;
   flex-direction: column;
-  right: 0.6em;
+  right: 0.2em;
   height: 90%;
   justify-content: center;
 }
 .content .slide-show .slide-nav-bar button {
-  width: 0.5em;
-  height: 2em;
+  width: 2em;
+  height: 0.5em;
   margin: 1em;
-  box-shadow: 0 0 1em 0 black;
+  box-shadow: 0 0 1em 0 #000000;
 }
 .content .slide-show .slide-nav-bar .active {
   background: red;
+}
+@media only screen and (max-height: 500px) {
+  .content .slide-show .slide-nav-bar {
+    flex-direction: row;
+    bottom: 0;
+    align-items: flex-end;
+    left: 0;
+    justify-content: center;
+    width: 50%;
+  }
 }
 .content .slide-show .slide-buttons {
   bottom: 0.6em;
@@ -181,7 +191,7 @@ html body button {
 .content .slide-show .slide-buttons .slide-button {
   margin-right: 0.8em;
   padding: 0.8em;
-  box-shadow: 0 0 1em 0 black;
+  box-shadow: 0 0 1em 0 #000000;
 }
 .content .slide-show .image-1 {
   background: url("images/5.png");
@@ -219,52 +229,52 @@ html body button {
   -o-animation: move-to-out 3s 0s 1 forwards;
   animation: move-to-out 3s 0s 1 forwards;
 }
-.content .service-header {
+.content .service-section .service-header {
   font-size: 1.3rem;
   text-align: center;
 }
-.content .services {
+.content .service-section .services {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   color: #000000;
 }
-.content .services .service {
+.content .service-section .services .service {
   display: flex;
   flex-direction: column;
   margin: 0.5em;
   width: 21vmax;
 }
-.content .services .service > img {
+.content .service-section .services .service > img {
   margin: 0.5em;
   height: 16em;
   align-self: center;
 }
 @media only screen and (max-width: 540px) {
-  .content .services .service > img {
+  .content .service-section .services .service > img {
     height: 57vmax;
   }
 }
-.content .services .service > .text {
+.content .service-section .services .service > .text {
   margin: 1vmax;
 }
-.content .services .service > .text p:first-child {
+.content .service-section .services .service > .text p:first-child {
   font-size: 2rem;
   margin: 0.5vmax 0;
 }
 @media only screen and (max-width: 540px) {
-  .content .services .service > .text {
+  .content .service-section .services .service > .text {
     margin: 0 5vmax;
   }
 }
-.content .services .service:nth-child(2) {
+.content .service-section .services .service:nth-child(2) {
   border-left: 1px solid #D9D9D9;
   border-right: 1px solid #D9D9D9;
   padding: 0 3vmax;
 }
 @media only screen and (max-width: 1300px) {
-  .content .services .service:nth-child(2) {
+  .content .service-section .services .service:nth-child(2) {
     padding: 0;
     border: 0px;
     border-top: 1px solid #D9D9D9;
@@ -272,18 +282,18 @@ html body button {
   }
 }
 @media only screen and (max-width: 1300px) and (min-width: 540px) {
-  .content .services .service {
+  .content .service-section .services .service {
     flex-direction: row;
     width: auto;
   }
 }
 @media only screen and (max-width: 540px) {
-  .content .services .service {
+  .content .service-section .services .service {
     width: 60vmax;
   }
 }
 @media only screen and (max-width: 1300px) {
-  .content .services {
+  .content .service-section .services {
     flex-direction: column;
   }
 }
@@ -331,6 +341,20 @@ html body button {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.goTop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 0 1em 0 #000000;
+  padding: 0.3em 0.5em;
+  margin: 1.5em;
+  display: none;
+}
+.goTop.active {
+  display: block;
 }
 
 /* <keyframes> */

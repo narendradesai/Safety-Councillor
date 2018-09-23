@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "start npm run start::webpack && start npm run start::sass",
-    "dev-serve": "start npm run start::sass && start npm run start::webpack-server",
+    "dev": "start npm run start::sass && start npm run start::webpack-server",
     "build": "webpack --mode=production --devtool=none",
     "start::sass": "sass --watch main.scss index.css",
     "start::webpack-server": "webpack-dev-server --open"

@@ -108,8 +108,37 @@ class menu {
                 menu[0].getElementsByTagName(`ul`)[0].classList.add(`active`);
             }
         });
+
+        let goTop = document.getElementsByClassName(`goTop`);
+        goTop[0].addEventListener(`click`, (e) => {
+            window.scrollTo(0, 0);
+        });
+
+        window.addEventListener(`scroll`, (e) => {
+            let currentY = this.currentYPosition();
+            // console.log(`${currentY}`);
+            let secondViewOffsetTop = this.elementYPosition(`service-section`);
+            if( currentY > secondViewOffsetTop )
+                goTop[0].classList.add(`active`);
+            else
+                goTop[0].classList.remove(`active`);
+            liArray.some( element => {
+                let anchorValue = element.getElementsByTagName(`a`)[0].getAttribute(`value`);
+                let view = document.getElementsByClassName(anchorValue);
+                let viewPosition = this.elementYPosition(anchorValue);
+                let viewOffsetBottom = viewPosition + view[0].offsetHeight;
+                if( currentY >= viewPosition && currentY <= viewOffsetBottom ){
+                    liArray.map( element => {
+                        element.classList.remove(`active`);
+                    });
+                    element.classList.add(`active`);
+                    return;
+                }
+            });
+        });
+
     }
-    curruntYPosition() {
+    currentYPosition() {
         if(self.pageYOffset) 
             return self.pageYOffset;
         if(document.documentElement && document.documentElement.scrollTop)
@@ -131,14 +160,12 @@ class menu {
         return y;
     }
     smoothScroll(elementName){
-        let startY = this.curruntYPosition();
+        let startY = this.currentYPosition();
         let stopY = this.elementYPosition(elementName);
-        console.log(`${startY} : ${stopY}`);
         let distance = stopY > startY ? stopY - startY : startY - stopY;
         if (distance < 100) {
             scrollTo(0, stopY); return;
         }
-        console.log(`distance : ${distance}`);
         let speed = Math.round( distance / 100 );
         if( speed >= 20 ) speed = 20;
         let step = Math.round( distance / 25 );
