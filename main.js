@@ -61,7 +61,7 @@ class SlideShow {
         slideNavButtonsArray.map( element => {
             element.addEventListener(`click`, (e) => {
                 clearInterval(this.timer);
-                this.imageNumber = element.value;
+                this.imageNumber = parseInt(element.value);
                 this.setImage();
                 this.interval();
             } );

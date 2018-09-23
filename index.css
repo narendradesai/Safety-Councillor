@@ -159,6 +159,7 @@ html body button {
   right: 0.2em;
   height: 90%;
   justify-content: center;
+  z-index: 1;
 }
 .content .slide-show .slide-nav-bar button {
   width: 2em;
