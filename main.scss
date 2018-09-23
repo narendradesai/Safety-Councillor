@@ -376,18 +376,22 @@ html {
 }
 @-webkit-keyframes move-to-out {
     0% {left: 0}
+    30% {left: -100%}
     100% {left: -100%}
 }
 @-moz-keyframes move-to-out {
     0% {left: 0}
+    30% {left: -100%}
     100% {left: -100%}
 }
 @-o-keyframes move-to-out {
     0% {left: 0}
+    30% {left: -100%}
     100% {left: -100%}
 }
 @keyframes move-to-out {
     0% {left: 0}
+    30% {left: -100%}
     100% {left: -100%}
 }
 @-webkit-keyframes skew-button {

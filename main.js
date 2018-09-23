@@ -13,8 +13,8 @@ class SlideShow {
     setImage() {
         let moved = document.getElementsByClassName(`move-to-center`);
         moved[0].classList.add(`move-to-out`);
-        moved[0].style.WebkitAnimationDuration = `${config.slideTime/2.5}ms`;
-        moved[0].style.animationDuration = `${config.slideTime/2.5}ms`;
+        moved[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
+        moved[0].style.animationDuration = `${config.slideTime}ms`;
         moved[0].classList.remove(`move-to-center`);
 
         let imageElement = document.getElementsByClassName(`image-${this.imageNumber}`);
