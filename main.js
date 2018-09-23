@@ -113,7 +113,7 @@ class menu {
 
         window.addEventListener(`scroll`, (e) => {
             let currentY = this.currentYPosition();
-            currentY += self.innerHeight / 1.7;
+            currentY += self.innerHeight / 1.9;
             console.log(`${this.currentYPosition()} : ${currentY}`);
             let secondViewOffsetTop = this.elementYPosition(`service-section`);
             if( currentY > secondViewOffsetTop ) {

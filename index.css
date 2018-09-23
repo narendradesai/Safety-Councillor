@@ -300,7 +300,8 @@ html body button {
   display: flex;
   justify-content: space-around;
   color: #ffffff;
-  padding-bottom: 50px;
+  padding-bottom: 1em;
+  overflow: hidden;
 }
 .footer > div {
   margin: 1em 2em;
@@ -325,18 +326,32 @@ html body button {
   font-family: inherit;
   align-self: center;
   padding: 0.1em 2em;
+  color: #0D9361;
 }
 .footer .about {
   width: 50%;
   text-align: end;
 }
-.footer .about :nth-child(2) {
+.footer .about > :nth-child(2) {
   font-size: 2rem;
+  margin-top: -1.8em;
 }
 .footer .about .red-div {
-  position: absolute;
   background: red;
-  width: 100%;
+  width: 200%;
+  height: 4em;
+}
+.footer .about .followers ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.footer .about .followers ul > li {
+  margin: 0 0.5em;
+  white-space: nowrap;
+}
+.footer .about .followers img {
+  height: 3em;
 }
 @media only screen and (max-width: 540px) {
   .footer {
@@ -345,13 +360,29 @@ html body button {
   }
 }
 
+.developerOnly {
+  background: #0D9361;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+.developerOnly p {
+  margin: 0;
+  color: #ffffff;
+  margin-right: 0.5em;
+}
+.developerOnly img {
+  height: 2em;
+}
+
 .goTop {
   position: fixed;
   right: 0;
   background: #ffffff;
   box-shadow: 0 0 1em 0 #000000;
   padding: 1em 0.5em;
-  margin: 2.2em;
+  margin: 4.5em 1.1em;
   border-radius: 0.2em;
 }
 .goTop.active {
