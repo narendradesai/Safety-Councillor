@@ -1,5 +1,5 @@
 {
     "enableDevMode": true,
     "slideTime": 500,
-    "slideChange": 3000
+    "slideChange": 10000
 }
