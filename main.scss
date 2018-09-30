@@ -99,6 +99,9 @@ html {
                     border-bottom: 1px solid map-get($map: $colors, $key: transparentt);
                 }
                 div:nth-child(even) {
+                    -webkit-animation: skew-button 250ms linear 1 forwards;
+                    -moz-animation: skew-button 250ms linear 1 forwards;
+                    -o-animation: skew-button 250ms linear 1 forwards;
                     animation: skew-button 250ms linear 1 forwards;
                 }
                 div:nth-child(even)::after {
@@ -108,6 +111,9 @@ html {
                     height: 100%;
                     border-bottom: 1px solid black;
                     margin: -2px 0;
+                    -webkit-animation: skew-button-after 250ms linear 1 forwards;
+                    -moz-animation: skew-button-after 250ms linear 1 forwards;
+                    -o-animation: skew-button-after 250ms linear 1 forwards;
                     animation: skew-button-after 250ms linear 1 forwards;
                 }
             }
@@ -223,17 +229,29 @@ html {
             background-position: center;
             left: 100%;
         }
-        .move-to-center {
-            -webkit-animation: move-to-center 8s 0s 1 forwards;
-            -moz-animation: move-to-center 8s 0s 1 forwards;
-            -o-animation: move-to-center 8s 0s 1 forwards;
-            animation: move-to-center 8s 0s 1 forwards;
+        .move-right-center {
+            -webkit-animation: move-right-center 3s 0s 1 forwards;
+            -moz-animation: move-right-center 3s 0s 1 forwards;
+            -o-animation: move-right-center 3s 0s 1 forwards;
+            animation: move-right-center 3s 0s 1 forwards;
         }
-        .move-to-out {
-            -webkit-animation: move-to-out 3s 0s 1 forwards;
-            -moz-animation: move-to-out 3s 0s 1 forwards;
-            -o-animation: move-to-out 3s 0s 1 forwards;
-            animation: move-to-out 3s 0s 1 forwards;
+        .move-center-left {
+            -webkit-animation: move-center-left 3s 0s 1 forwards;
+            -moz-animation: move-center-left 3s 0s 1 forwards;
+            -o-animation: move-center-left 3s 0s 1 forwards;
+            animation: move-center-left 3s 0s 1 forwards;
+        }
+        .move-left-center {
+            -webkit-animation: move-left-center 3s 0s 1 forwards;
+            -moz-animation: move-left-center 3s 0s 1 forwards;
+            -o-animation: move-left-center 3s 0s 1 forwards;
+            animation: move-left-center 3s 0s 1 forwards;
+        }
+        .move-center-right {
+            -webkit-animation: move-center-right 3s 0s 1 forwards;
+            -moz-animation: move-center-right 3s 0s 1 forwards;
+            -o-animation: move-center-right 3s 0s 1 forwards;
+            animation: move-center-right 3s 0s 1 forwards;
         }
     }
     .service-section {
@@ -385,53 +403,100 @@ html {
     margin: 4.5em 1.1em;
     border-radius: 0.2em;
     &.active {
+        -webkit-animation: move-to-top 500ms 0s linear forwards;
+        -moz-animation: move-to-top 500ms 0s linear forwards;
+        -o-animation: move-to-top 500ms 0s linear forwards;
         animation: move-to-top 500ms 0s linear forwards;
     }
     &.inactive {
+        -webkit-animation: move-to-bottom 500ms 0s linear forwards;
+        -moz-animation: move-to-bottom 500ms 0s linear forwards;
+        -o-animation: move-to-bottom 500ms 0s linear forwards;
         animation: move-to-bottom 500ms 0s linear forwards;
     }
 }
 /* <keyframes> */
-@-webkit-keyframes move-to-center {
+@-webkit-keyframes move-right-center {
     0% {left: 100%}
     30% {left: 0}
     100% {left: 0}
 }
-@-moz-keyframes move-to-center {
+@-moz-keyframes move-right-center {
     0% {left: 100%}
     30% {left: 0}
     100% {left: 0}
 }
-@-o-keyframes move-to-center {
+@-o-keyframes move-right-center {
     0% {left: 100%}
     30% {left: 0}
     100% {left: 0}
 }
-@keyframes move-to-center {
+@keyframes move-right-center {
     0% {left: 100%}
     30% {left: 0}
     100% {left: 0}
 }
-@-webkit-keyframes move-to-out {
+@-webkit-keyframes move-center-left {
     0% {left: 0}
     30% {left: -100%}
     100% {left: -100%}
 }
-@-moz-keyframes move-to-out {
+@-moz-keyframes move-center-left {
     0% {left: 0}
     30% {left: -100%}
     100% {left: -100%}
 }
-@-o-keyframes move-to-out {
+@-o-keyframes move-center-left {
     0% {left: 0}
     30% {left: -100%}
     100% {left: -100%}
 }
-@keyframes move-to-out {
+@keyframes move-center-left {
     0% {left: 0}
     30% {left: -100%}
     100% {left: -100%}
 }
+@-webkit-keyframes move-left-center {
+    0% {left: -100%}
+    30% {left: 0}
+    100% {left: 0}
+}
+@-moz-keyframes move-left-center {
+    0% {left: -100%}
+    30% {left: 0}
+    100% {left: 0}
+}
+@-o-keyframes move-left-center {
+    0% {left: -100%}
+    30% {left: 0}
+    100% {left: 0}
+}
+@keyframes move-left-center {
+    0% {left: -100%}
+    30% {left: 0}
+    100% {left: 0}
+}
+@-webkit-keyframes move-center-right {
+    0% {left: 0}
+    30% {left: 100%}
+    100% {left: 100%}
+}
+@-moz-keyframes move-center-right {
+    0% {left: 0}
+    30% {left: 100%}
+    100% {left: 100%}
+}
+@-o-keyframes move-center-right {
+    0% {left: 0}
+    30% {left: 100%}
+    100% {left: 100%}
+}
+@keyframes move-center-right {
+    0% {left: 0}
+    30% {left: 100%}
+    100% {left: 100%}
+}
+
 @-webkit-keyframes skew-button {
     0% {transform: skew(0, 0)}
     100% {transform: skew(0, 36deg)}

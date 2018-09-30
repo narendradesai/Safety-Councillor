@@ -10,18 +10,37 @@ class SlideShow {
         this.interval();
         this.addEventListners();
     }
-    setImage() {
-        let moved = document.getElementsByClassName(`move-to-center`);
-        moved[0].classList.add(`move-to-out`);
-        moved[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
-        moved[0].style.animationDuration = `${config.slideTime}ms`;
-        moved[0].classList.remove(`move-to-center`);
+    setImage(direction) {
+        if(direction == "inc") {
+            this.imageNumber += 1;
+            this.adjustImageCount();
+            let moved = document.getElementsByClassName(`centered`);
+            moved[0].classList.add(`move-center-left`);
+            moved[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
+            moved[0].style.animationDuration = `${config.slideTime}ms`;
+            moved[0].classList.remove(`move-right-center`, `move-left-center`, `centered`);
 
-        let imageElement = document.getElementsByClassName(`image-${this.imageNumber}`);
-        imageElement[0].classList.add(`move-to-center`);
-        imageElement[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
-        imageElement[0].style.animationDuration = `${config.slideTime}ms`;
-        imageElement[0].classList.remove(`move-to-out`);
+            let imageElement = document.getElementsByClassName(`image-${this.imageNumber}`);
+            imageElement[0].classList.add(`centered`, `move-right-center`);
+            imageElement[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
+            imageElement[0].style.animationDuration = `${config.slideTime}ms`;
+            imageElement[0].classList.remove(`move-center-left`, `move-center-right`);
+        }
+        else if (direction == "dec") {
+            this.imageNumber -= 1;
+            this.adjustImageCount();
+            let moved = document.getElementsByClassName(`centered`);
+            moved[0].classList.add(`move-center-right`);
+            moved[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
+            moved[0].style.animationDuration = `${config.slideTime}ms`;
+            moved[0].classList.remove(`move-right-center`, `move-left-center`, `centered`);
+
+            let imageElement = document.getElementsByClassName(`image-${this.imageNumber}`);
+            imageElement[0].classList.add(`centered`, `move-left-center`);
+            imageElement[0].style.WebkitAnimationDuration = `${config.slideTime}ms`;
+            imageElement[0].style.animationDuration = `${config.slideTime}ms`;
+            imageElement[0].classList.remove(`move-center-left`, `move-center-right`);
+        }
 
         let slideNavBar = document.getElementsByClassName(`slide-nav-bar`);
         let slideNavButtons = slideNavBar[0].getElementsByTagName(`button`);
@@ -34,10 +53,8 @@ class SlideShow {
     }
     interval() {
         this.timer = setInterval( () => {
-            this.imageNumber += 1;
-            this.adjustImageCount();
-            this.setImage();
-        }, config.slideTime );
+            this.setImage(`inc`);
+        }, config.slideChange );
     }
     addEventListners() {
         let buttonElement = document.getElementsByClassName(`slide-button`);
@@ -45,12 +62,7 @@ class SlideShow {
         buttonElementArray.map( (element) => {
             element.addEventListener(`click`, (e) => {
                 clearInterval(this.timer);
-                if(element.value == "inc")
-                    this.imageNumber += 1;
-                else
-                    this.imageNumber -= 1;
-                this.adjustImageCount();
-                this.setImage();
+                this.setImage(element.value);
                 this.interval();
             });
         });
@@ -61,8 +73,18 @@ class SlideShow {
         slideNavButtonsArray.map( element => {
             element.addEventListener(`click`, (e) => {
                 clearInterval(this.timer);
-                this.imageNumber = parseInt(element.value);
-                this.setImage();
+                let pressed = parseInt(element.value);
+                let currentNumber = this.imageNumber; 
+                if( pressed > currentNumber ) {
+                    for (let i = currentNumber; i < pressed; i++) {
+                        this.setImage(`inc`);
+                    }
+                }
+                else {
+                    for (let i = pressed; i < currentNumber; i++) {
+                        this.setImage(`dec`);
+                    }
+                }
                 this.interval();
             } );
         } );
@@ -72,7 +94,7 @@ class SlideShow {
         if( this.imageNumber > slideImagesElement.length )
             this.imageNumber = 1;
         else if ( this.imageNumber < 1 )
-            this.imageNumber = 4;
+            this.imageNumber = slideImagesElement.length;
     }
 }
 
